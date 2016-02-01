@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Mixins</title>
+	<script src="http://fb.me/react-0.12.2.js"></script>
+	<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+	<style type="text/css">
+		body{
+			margin: 25px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app"></div>
+	<script type="text/jsx">
+		/* @jsx React.DOM */
+		var APP = React.createClass({
+			render: function() {
+				return (
+					<div>
+						<buttonComponent txt="this is the button" />
+						<inputComponent txt="this is the input" />
+					</div>
+				)
+			}
+		});
+
+		var buttonComponent = React.createClass({
+			render: function() {
+				return <button>{this.props.txt}</button>
+			}
+		});
+
+		var inputComponent = React.createClass({
+			render: function() {
+				return <input value={this.props.txt} />
+			}
+		});
+
+		React.renderComponent(<APP />, document.getElementById('app'));
+	</script>
+</body>
+</html>
